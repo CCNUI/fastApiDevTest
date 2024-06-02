@@ -1,4 +1,6 @@
+# schemas.py
 from pydantic import BaseModel
+from datetime import datetime
 
 class TeacherBase(BaseModel):
     name: str
@@ -10,7 +12,7 @@ class Teacher(TeacherBase):
     id: int
 
     class Config:
-        orm_mode = True  # 确保启用了 orm_mode
+        orm_mode = True
 
 class StudentBase(BaseModel):
     name: str
@@ -23,4 +25,17 @@ class Student(StudentBase):
     id: int
 
     class Config:
-        orm_mode = True  # 确保启用了 orm_mode
+        orm_mode = True
+
+class MFARequestLogBase(BaseModel):
+    ip_address: str
+
+class MFARequestLogCreate(MFARequestLogBase):
+    pass
+
+class MFARequestLog(MFARequestLogBase):
+    id: int
+    timestamp: datetime
+
+    class Config:
+        orm_mode = True
