@@ -29,6 +29,9 @@ class Student(StudentBase):
 
 class MFARequestLogBase(BaseModel):
     ip_address: str
+    mfa_code: str
+    verified: bool = False
+    client_mfa_code: str = None
 
 class MFARequestLogCreate(MFARequestLogBase):
     pass

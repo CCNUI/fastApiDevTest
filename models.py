@@ -1,5 +1,4 @@
-# models.py
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Boolean
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
@@ -23,3 +22,6 @@ class MFARequestLog(Base):
     id = Column(Integer, primary_key=True, index=True)
     timestamp = Column(DateTime, default=datetime.utcnow)
     ip_address = Column(String, index=True)
+    mfa_code = Column(String, index=True)
+    verified = Column(Boolean, default=False)
+    client_mfa_code = Column(String, index=True)
