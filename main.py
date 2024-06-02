@@ -3,6 +3,7 @@ import os
 import logging
 from dotenv import load_dotenv
 from fastapi import FastAPI, Depends, HTTPException, Request
+from game_app import game_app  # 导入游戏子应用
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from models import Base, Teacher as TeacherModel, Student as StudentModel, MFARequestLog as MFARequestLogModel
@@ -43,6 +44,8 @@ async def read_root():
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
 
+# 将游戏子应用挂载到主应用的 `/game` 路径下
+app.mount("/game", game_app)
 
 # Dependency
 def get_db():
@@ -115,3 +118,6 @@ def read_teachers(skip: int = 0, limit: int = 10, db: Session = Depends(get_db))
     except Exception as e:
         logging.error(f"Error reading teachers: {e}")
 
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
