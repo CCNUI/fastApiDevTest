@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Game</title>
+    <title>外星人攻击 - Python小游戏</title>
     <style>
+        body {
+            background-color: black; /* 设置背景颜色为黑色 */
+            border-color: white;
+            color: white;
+        }
         canvas {
-            border: 1px solid black;
+            border: 1px solid white;
         }
     </style>
     <script type="text/javascript" src="/game/static/brython/brython.js"></script>
     <script type="text/javascript" src="/game/static/brython/brython_stdlib.js"></script>
 </head>
 <body onload="brython()">
-    <h1>Alien Invasion</h1>
-    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <h1>外星人攻击</h1>
+    <h2>Python小游戏 - 计科2101班 第二组 Python程序设计课程作业</h2>
+    <div id="gameCanvasContainer" style="position: relative;">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+    </div>
     <script type="text/python" src="/game/static/game.py"></script>
 </body>
 </html>
